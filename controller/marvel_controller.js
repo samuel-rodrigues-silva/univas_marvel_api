@@ -8,8 +8,8 @@ const listAll = (req, res) => {
 
     let ts = Number(Date.now());
     let hash = md5(ts + '95f18fa6ccae5a5dbf5f5d6749c83288b691b3ac' + apikey);
-    let request = axios.get(`${MarvelApiHost}?ts=${ts}&apikey=${apikey}&hash=${hash}`).then(response => {
-        res.send(JSON.stringify(response));
+    axios.get(`${MarvelApiHost}?ts=${ts}&apikey=${apikey}&hash=${hash}`).then(response => {
+        res.status(200).send(response.data);
     }).catch(err => { console.log(err) });
 };
 
