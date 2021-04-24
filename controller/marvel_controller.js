@@ -8,7 +8,7 @@ const listAll = (req, res) => {
     let ts = new Date.now();
     let hash = md5(ts);
     let request = axios.get(`${MarvelApiHost}?ts=${ts}&apikey=${apikey}&hash=${hash}`).then(response => {
-        console.log(response);
+        res.send(response);
     });
     console.log('REQUEST: ' + request);
     res.send(request);
