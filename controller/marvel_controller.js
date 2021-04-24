@@ -4,8 +4,8 @@ const MarvelApiHost = 'http://gateway.marvel.com/v1/public/characters';
 const apikey = '6c4ed2deff05cc8ecbcf371162944db7';
 var x = '?ts=1&apikey=1234&hash=ffd275c5130566a2916217b101f26150';
 
-const listAll = (req, res) => {
 
+const listAll = (req, res) => {
     let ts = Number(Date.now());
     let hash = md5(ts + '95f18fa6ccae5a5dbf5f5d6749c83288b691b3ac' + apikey);
     axios.get(`${MarvelApiHost}?ts=${ts}&apikey=${apikey}&hash=${hash}`).then(response => {
@@ -14,8 +14,10 @@ const listAll = (req, res) => {
 };
 
 const fetchComics = (req, res) => {
-
-    res.send('comics')
+    var id = req.body.charId;
+    axios.get(`${MarvelApiHost}/${id}/comics?ts=${ts}&apikey=${apikey}&hash=${hash}`).then(response => {
+        res.status(200).send(response.data);
+    }).catch(err => { console.log(err) });
 };
 
 const fetchEvents = (req, res) => {

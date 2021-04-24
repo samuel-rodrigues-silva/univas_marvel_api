@@ -4,12 +4,12 @@ const controller = require('../controller/marvel_controller');
 
 router.get('/', controller.listAll);
 
-router.get('/comics/:char', controller.fetchComics);
+router.get('/comics/:charId', controller.fetchComics);
 
-router.get('/events/:char', controller.fetchEvents);
+router.get('/events/:charId', controller.fetchEvents);
 
-router.get('/series/:char', controller.fetchSeries);
+router.get('/series/:charId', controller.fetchSeries);
 
-router.get('/stories/:char', controller.fetchStories);
+router.get('/stories/:charId', controller.fetchStories);
 
 module.exports = router;
