@@ -5,8 +5,8 @@ const apikey = '6c4ed2deff05cc8ecbcf371162944db7';
 var x = '?ts=1&apikey=1234&hash=ffd275c5130566a2916217b101f26150';
 
 const listAll = (req, res) => {
-    let ts = new Date.now();
-    let hash = Md5.hashStr(ts);
+    let ts = Number(new Date());
+    let hash = new Md5.hashStr(ts + '95f18fa6ccae5a5dbf5f5d6749c83288b691b3ac');
     let request = http.get(`${MarvelApiHost}?ts=${ts}&apikey=${apikey}&hash=${hash}`).then(response => {
         res.send(response);
         res.send(request);
