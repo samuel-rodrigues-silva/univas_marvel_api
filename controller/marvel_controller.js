@@ -1,6 +1,6 @@
 const http = require('http');
 const { Md5 } = require('ts-md5/dist/md5');
-const MarvelApiHost = 'https://gateway.marvel.com/v1/public/characters';
+const MarvelApiHost = 'http://gateway.marvel.com/v1/public/characters';
 const apikey = '6c4ed2deff05cc8ecbcf371162944db7';
 var x = '?ts=1&apikey=1234&hash=ffd275c5130566a2916217b101f26150';
 
