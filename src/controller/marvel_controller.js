@@ -24,6 +24,15 @@ const listAll = (req, res) => {
     }).catch(err => { console.log(err) });
 };
 
+const fetchCharacter = (req, res) => {
+    const charId = req.params.id;
+    let credentials = getCredentials();
+    axios.get(`${MarvelApiHost}/${charId}?ts=${credentials[0]}&apikey=${apikey}&hash=${credentials[1]}`).then(response => {
+        res.status(200).send(response.data);
+    }).catch(err => { console.log(err) });
+
+};
+
 const fetchComics = (req, res) => {
     const charId = req.params.id;
     fetchBy('comics', charId, res);
@@ -49,4 +58,4 @@ const fetchStories = (req, res) => {
 };
 
 
-module.exports = { listAll, fetchComics, fetchEvents, fetchSeries, fetchStories };
+module.exports = { listAll, fetchComics, fetchEvents, fetchSeries, fetchStories, fetchCharacter };

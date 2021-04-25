@@ -4,6 +4,8 @@ const controller = require('../controller/marvel_controller');
 
 router.get('/', controller.listAll);
 
+router.get('/', controller.fetchCharacter);
+
 router.get('/comics/:id', controller.fetchComics);
 
 router.get('/events/:id', controller.fetchEvents);
