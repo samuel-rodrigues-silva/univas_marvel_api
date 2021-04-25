@@ -6,10 +6,10 @@ router.get('/', controller.listAll);
 
 router.get('/comics/:id', controller.fetchComics);
 
-router.get('/events/:charId', controller.fetchEvents);
+router.get('/events/:id', controller.fetchEvents);
 
-router.get('/series/:charId', controller.fetchSeries);
+router.get('/series/:id', controller.fetchSeries);
 
-router.get('/stories/:charId', controller.fetchStories);
+router.get('/stories/:id', controller.fetchStories);
 
 module.exports = router;
