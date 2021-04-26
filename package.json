@@ -7,11 +7,14 @@
     "axios": "^0.21.1",
     "express": "^4.17.1",
     "md5": "^2.3.0",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "swagger-autogen": "^2.6.3",
+    "swagger-ui-express": "^4.1.4"
   },
   "devDependencies": {},
   "scripts": {
     "start": "nodemon",
+    "swagger-autogen": "node swagger.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
