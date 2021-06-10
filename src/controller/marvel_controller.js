@@ -57,4 +57,4 @@ const fetchStories = (req, res) => {
 };
 
 
-module.exports = { listAll, fetchComics, fetchEvents, fetchSeries, fetchStories, fetchCharacter, getCredentials };
+module.exports = { listAll, fetchBy, fetchComics, fetchEvents, fetchSeries, fetchStories, fetchCharacter, getCredentials };

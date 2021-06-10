@@ -1,5 +1,6 @@
 const controller = require('../../src/controller/marvel_controller');
 const chai = require('chai');
+const expect = chai.expect;
 const sinon = require('sinon');
 
 const { expect } = require('chai');
@@ -11,11 +12,28 @@ describe('Marvel Controller', () => {
         expect(result).to.be.a('array')
     })
 
-    // it('Call fetchBy should return statusCode 200', () => {
-    //     const res = {};
-    //     res.status = () => res;
-    //     res.send = sinon.spy();
-
-    //     expect(res.send).to.be.equal(200)
+    // it('Call fetchBy should return json object', () => {
+    //     const result = controller.fetchBy();
+    //     expect(result).to.be.a('json');
     // })
+
+    it('Call fetchCharacter should return a json object populated by all marvel characteres', () => {
+
+    });
+
+    it('Call fetchComics should return a json object populated by marvel comics', () => {
+
+    });
+
+    it('Call fetchEvents should return a json object populated by marvel events', () => {
+
+    });
+
+    it('Call fetchSeries should return a json object populated by marvel series', () => {
+
+    });
+
+    it('Call fetchStories should return a json object populated by marvel stories', () => {
+
+    });
 });
