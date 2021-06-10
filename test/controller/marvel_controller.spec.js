@@ -1,6 +1,5 @@
 const controller = require('../../src/controller/marvel_controller');
 const chai = require('chai');
-const expect = chai.expect;
 const sinon = require('sinon');
 
 const { expect } = require('chai');
@@ -18,6 +17,18 @@ describe('Marvel Controller', () => {
     // })
 
     it('Call fetchCharacter should return a json object populated by all marvel characteres', () => {
+
+        const req = {
+            body: JSON
+        };
+        const res = {};
+        res.status = () => res;
+        res.send = sinon.spy();
+
+        controller.fetchCharacter(req, res);
+
+        expect(res.send.calledOnce).to.be.true;
+        expect(res.send.firstCall.args[0]).to.be.equal(JSON);
 
     });
 
