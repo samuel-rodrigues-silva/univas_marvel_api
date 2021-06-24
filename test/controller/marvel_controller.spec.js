@@ -1,5 +1,6 @@
 const controller = require('../../src/controller/marvel_controller');
 const chai = require('chai');
+const proxyquire = require('proxyquire');
 const sinon = require('sinon');
 
 const { expect } = require('chai');
@@ -11,24 +12,38 @@ describe('Marvel Controller', () => {
         expect(result).to.be.a('array')
     })
 
-    // it('Call fetchBy should return json object', () => {
-    //     const result = controller.fetchBy();
-    //     expect(result).to.be.a('json');
-    // })
+    it('Call fetchBy should return status 200', () => {
+        const mData = JSON;
+        const mResponse = { statusCode: 200, data: mData };
+        const mRp = sinon.stub().resolves(mResponse);
+        const { app } = proxyquire('./server', {
+            'request-promise': mRp
+        })
+
+        chai
+            .request(app)
+            .get('/url')
+            .end((err, res) => {
+                expect(err).to.be.null;
+                expect(res).to.have.status(200);
+                expect(mRp.calledWith({ url: 'http//some-api-en-point', method: 'GET', resolveWithFullResponse: true }));
+                done();
+            });
+    });
 
     it('Call fetchCharacter should return a json object populated by all marvel characteres', () => {
 
-        const req = {
-            body: JSON
-        };
-        const res = {};
-        res.status = () => res;
-        res.send = sinon.spy();
+        // const req = {
+        //     body: marvel
+        // };
+        // const res = {};
+        // res.status = () => res;
+        // res.send = sinon.spy();
 
-        controller.fetchCharacter(req, res);
+        // controller.fetchCharacter(req, res);
 
-        expect(res.send.calledOnce).to.be.true;
-        expect(res.send.firstCall.args[0]).to.be.equal(JSON);
+        // expect(res.send.calledOnce).to.be.true;
+        // expect(res.send.firstCall.args[0]).to.be.equal(JSON);
 
     });
 
@@ -47,4 +62,5 @@ describe('Marvel Controller', () => {
     it('Call fetchStories should return a json object populated by marvel stories', () => {
 
     });
+
 });
