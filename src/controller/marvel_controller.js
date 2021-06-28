@@ -9,9 +9,9 @@ function getCredentials() {
     return [ts, hash];
 }
 
-function fetchBy(option, charId, res) {
+function fetchBy(option, charId = 1011334, res) {
     let credentials = getCredentials();
-    axios.get(`${MarvelApiHost}/${charId}/${option}?ts=${credentials[0]}&apikey=${apikey}&hash=${credentials[1]}`).then(response => {
+    return axios.get(`${MarvelApiHost}/${charId}/${option}?ts=${credentials[0]}&apikey=${apikey}&hash=${credentials[1]}`).then(response => {
         res.status(200).send(response.data);
     }).catch(err => { console.log(err) });
 }
@@ -26,15 +26,14 @@ const listAll = (req, res) => {
 const fetchCharacter = (req, res) => {
     const charId = req.params.id;
     let credentials = getCredentials();
-    axios.get(`${MarvelApiHost}/${charId}?ts=${credentials[0]}&apikey=${apikey}&hash=${credentials[1]}`).then(response => {
+    return axios.get(`${MarvelApiHost}/${charId}?ts=${credentials[0]}&apikey=${apikey}&hash=${credentials[1]}`).then(response => {
         res.status(200).send(response.data);
     }).catch(err => { console.log(err) });
-
 };
 
 const fetchComics = (req, res) => {
     const charId = req.params.id;
-    fetchBy('comics', charId, res);
+    return fetchBy('comics', charId, res);
 
 };
 
