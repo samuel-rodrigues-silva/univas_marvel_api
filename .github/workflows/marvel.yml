@@ -20,4 +20,4 @@
         
         - name: run unit test with mocha
           run: npm test
-          working-directory: ./api
+          working-directory: ./api/test/controller/
